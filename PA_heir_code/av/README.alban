@@ -1,0 +1,14 @@
+TAKE INPUT IN YEARS, NOT DAYS
+
+this targets the tfhe-rs, which is better for operations on int
+
+so the better opt operations would be:
+
+--forward-store-to-load
+--secretize
+--secret-distribute-generic
+--secret-to-cggi
+--cggi-to-tfhe-rust
+
+
+also the tranlsate level may need --use-levels I don't know why

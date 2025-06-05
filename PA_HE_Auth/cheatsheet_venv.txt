@@ -1,0 +1,14 @@
+Hello, here are some things:
+
+1: start the venv with:
+
+source ./venv/bin/activate
+
+2: stop the venv with: 
+
+deactivate
+
+3: install requirements:
+
+pip install -r requirements.txt
+

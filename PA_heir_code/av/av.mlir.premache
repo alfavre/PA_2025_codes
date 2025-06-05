@@ -1,0 +1,15 @@
+// RUN: heir-translate %s --emit-tfhe-rust --use-levels > %S/src/fn_under_test.rs
+// RUN: cargo run --release --manifest-path %S/Cargo.toml --bin main -- 2 3 --message_bits=3 | FileCheck %s
+
+!sks = !tfhe_rust.server_key
+!lut = !tfhe_rust.lookup_table
+!eui8 = !tfhe_rust.eui8
+!eui2 = !tfhe_rust.eui2
+!bool = !tfhe_rust.bool
+
+func.func @av(%sks : !sks, %a: !eui8, %b: !eui8, %zero: !eui8) -> !bool {
+  %res = tfhe_rust.sub %sks, %a, %b : (!sks, !eui8, !eui8) -> !eui8
+  //%comp = tfhe_rust.cmp sgt, %sks, %res, %zero : (!sks, !eui8, !eui8) -> !eui2
+  %comp = tfhe_rust.cmp %sks, %res, %zero { predicate = 4 : i64 } : (!sks, !eui8, !eui8) -> !bool
+  return %comp : !bool
+}

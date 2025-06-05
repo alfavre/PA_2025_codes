@@ -1,0 +1,2 @@
+This is the cmux example
+this targets the tfhe-rs-bool, which is better for pure logical operations, like sha256
